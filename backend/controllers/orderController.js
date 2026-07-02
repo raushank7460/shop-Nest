@@ -1,6 +1,5 @@
 const Order = require("../models/orderModel");
 
-// @desc  Place order (simulated payment — mark as Paid immediately)
 const createOrder = async (req, res) => {
   try {
     const { items, shippingAddress } = req.body;
@@ -19,7 +18,7 @@ const createOrder = async (req, res) => {
       items,
       totalAmount,
       shippingAddress,
-      paymentStatus: "Paid", // simulated — real gateway (Razorpay/Stripe) yahan verify karega
+      paymentStatus: "Paid", 
       orderStatus: "Placed",
     });
 
@@ -29,7 +28,7 @@ const createOrder = async (req, res) => {
   }
 };
 
-// @desc  Get logged-in user's orders
+
 const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });

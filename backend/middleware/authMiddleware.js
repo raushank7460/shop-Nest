@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-// Verify token, attach user to req
+
 const protect = async (req, res, next) => {
   let token;
 
@@ -23,7 +23,6 @@ const protect = async (req, res, next) => {
   }
 };
 
-// Only allow admin
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === "admin") {
     next();
