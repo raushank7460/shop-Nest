@@ -1,0 +1,7 @@
+.env
+node_modules
+
+// npm run seed:admin
+
+admin@shopnest.com
+YourStrongPassword12
