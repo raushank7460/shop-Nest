@@ -17,11 +17,26 @@
 // router.delete("/:id", protect, isAdmin, deleteProduct);
 
 // module.exports = router;
+// const express = require("express");
+// const router = express.Router();
+// const { getProducts, getProductById, createProduct, updateProduct, deleteProduct, addReview } = require("../controllers/productController");
+// const { protect, isAdmin } = require("../middleware/authMiddleware");
+// const upload = require("../middleware/uploadMiddleware");
+
+// router.get("/", getProducts);
+// router.get("/:id", getProductById);
+// router.post("/", protect, isAdmin, upload.array("images", 5), createProduct);
+// router.put("/:id", protect, isAdmin, upload.array("images", 5), updateProduct);
+// router.delete("/:id", protect, isAdmin, deleteProduct);
+// router.post("/:id/reviews", protect, addReview);
+
+// module.exports = router;
 const express = require("express");
 const router = express.Router();
-const { getProducts, getProductById, createProduct, updateProduct, deleteProduct, addReview } = require("../controllers/productController");
+const { getProducts, getProductById, createProduct, updateProduct, deleteProduct, addReview, bulkUploadProducts } = require("../controllers/productController");
 const { protect, isAdmin } = require("../middleware/authMiddleware");
 const upload = require("../middleware/uploadMiddleware");
+const csvUpload = require("../middleware/csvUploadMiddleware");
 
 router.get("/", getProducts);
 router.get("/:id", getProductById);
@@ -29,5 +44,6 @@ router.post("/", protect, isAdmin, upload.array("images", 5), createProduct);
 router.put("/:id", protect, isAdmin, upload.array("images", 5), updateProduct);
 router.delete("/:id", protect, isAdmin, deleteProduct);
 router.post("/:id/reviews", protect, addReview);
+router.post("/bulk-upload", protect, isAdmin, csvUpload.single("file"), bulkUploadProducts);
 
 module.exports = router;
