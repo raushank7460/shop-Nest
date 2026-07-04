@@ -39,8 +39,18 @@ app.use("/api/wishlist", wishlistRoutes);
 //app.use("/api/payment", paymentRoutes);
 
 // Server
-const PORT = process.env.PORT || 5005;
+// const PORT = process.env.PORT || 5005;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running on http://localhost:${PORT}`);
+// });
+
+module.exports = app;
+
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5005;
+
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}

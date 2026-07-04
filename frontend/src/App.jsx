@@ -618,7 +618,6 @@
 
 // --------------------------------
 
-
 import React, { useState, useEffect } from "react";
 
 const SERVER = "http://localhost:5005";
