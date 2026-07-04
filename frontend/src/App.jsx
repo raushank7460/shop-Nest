@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-const SERVER = "http://localhost:5005";
+// const SERVER = "http://localhost:5005";
+const SERVER = import.meta.env.VITE_API_URL || "";
 const AUTH_API = `${SERVER}/api/auth`;
 const PRODUCT_API = `${SERVER}/api/products`;
 const ORDER_API = `${SERVER}/api/orders`;
